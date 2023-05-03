@@ -1,5 +1,6 @@
 import './style.css';
-import menuImgSrc from "./menu.png";
+import menuImgSrc from './menu.png';
+import enterImgSrc from './enter.png';
 
 const container = document.querySelector('.to-do-list');
 
@@ -13,7 +14,15 @@ const input = document.createElement('input');
 input.type = 'text';
 input.name = 'description';
 input.placeholder = 'Add to your list...';
-form.appendChild(input);
+const inputLine = document.createElement('div')
+inputLine.className = 'input-line';
+inputLine.appendChild(input);
+const enterImg = document.createElement('img');
+enterImg.src = enterImgSrc;
+enterImg.className = 'enter-img';
+
+inputLine.appendChild(enterImg);
+form.appendChild(inputLine);
 container.appendChild(form);
 
 const arryOfTasks = [];
@@ -47,14 +56,18 @@ if (localStorage.length !== 0) {
       const li = document.createElement('li');
       const checkBox = document.createElement('input');
       checkBox.type = 'checkbox';
-      li.appendChild(checkBox);
+      const content = document.createElement('div');
+      content.className = 'content';
+      content.appendChild(checkBox);
       checkBox.checked = storedTasks[i].completed;
       const p = document.createElement('p');
       p.innerHTML = storedTasks[i].description;
       storedTasks[i].index = i;
-      li.appendChild(p);
+      content.appendChild(p);
+      li.appendChild(content);
       const menuImg = document.createElement('img');
       menuImg.src = menuImgSrc;
+      menuImg.classList = 'menu-img';
       li.appendChild(menuImg);
 
       ul.appendChild(li);

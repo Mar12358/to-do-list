@@ -1,14 +1,43 @@
 * {
-  margin: 0;
+  margin: 0.2vw;
   padding: 0;
   border: 0;
-  font-size: 100%;
+  font-size: 1.4vw;
   vertical-align: baseline;
 }
 body {
-  background-color: bisque;
+  justify-content: center;
 }
 
-li {
+.to-do-list {
+  width: 50vw;
+  align-items: center;
+}
+
+li,
+.content,
+body,
+.input-line {
   display: flex;
+  align-items: center;
+}
+li,
+.input-line,
+h1 {
+  border-bottom: 1px solid rgb(190, 190, 190);
+  justify-content: space-between;
+}
+.content {
+  gap: 1.5vw;
+}
+.menu-img,
+.enter-img {
+  height: 1.2rem;
+}
+h1 {
+  padding: 0.2vw;
+}
+input::placeholder {
+  font-size: 1.1vw;
+  font-style: italic;
 }
