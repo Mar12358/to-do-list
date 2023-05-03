@@ -6,18 +6,11 @@ import refreshImgSrc from './refresh.png';
 const body = document.getElementsByTagName('body')[0];
 const container = document.querySelector('.to-do-list');
 
-const h1Container = document.createElement('div');
-h1Container.className = 'h1-container';
-
-const h1 = document.createElement('h1');
-h1.innerHTML = "Today's To Do";
-h1Container.appendChild(h1);
+const h1Container = document.querySelector('.h1-container');
 const refreshImg = document.createElement('img');
 refreshImg.src = refreshImgSrc;
 refreshImg.className = 'refresh-img';
 h1Container.appendChild(refreshImg);
-container.appendChild(h1Container);
-
 const form = document.createElement('form');
 const input = document.createElement('input');
 input.type = 'text';
