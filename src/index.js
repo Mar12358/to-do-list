@@ -42,9 +42,9 @@ const Task = {
 const ul = document.createElement('ul');
 
 document.addEventListener('DOMContentLoaded', () => {
-  const task1 = Task.create('To-Do Task 1', 1);
-  const task2 = Task.create('To-Do Task 2', 2);
-  const task3 = Task.create('To-Do Task 3', 3);
+  const task1 = Task.create('Fix car', 1);
+  const task2 = Task.create('Wash Dishes', 2);
+  const task3 = Task.create('Practice Guitar', 3);
   arryOfTasks.push(task1);
   arryOfTasks.push(task2);
   arryOfTasks.push(task3);
