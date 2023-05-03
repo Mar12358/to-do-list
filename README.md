@@ -3,36 +3,34 @@
 <div align="center">
   <img src="logo.jpg" alt="logo" width="250"  height="auto" />
   <br/>
-  <h1><b>Hello Webpack</b></h1>
+  <h1><b>To Do List</b></h1>
 </div>
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-  - [🛠 Built With](#built-with)
-    - [Tech Stack](#tech-stack)
-    - [Key Features](#key-features)
-  - [🚀 Live Demo](#live-demo)
-  - [🚀 Presentation](#presentation)  
-- [💻 Getting Started](#getting-started)
-  - [Setup](#setup)
-  - [Prerequisites](#prerequisites)
-  - [Install](#install)
-  - [Usage](#usage)
-  - [Run tests](#run-tests)
-  - [Deployment](#triangular_flag_on_post-deployment)
-- [👥 Authors](#authors)
-- [🔭 Future Features](#future-features)
-- [🤝 Contributing](#contributing)
-- [⭐️ Show your support](#support)
-- [🙏 Acknowledgements](#acknowledgements)
-- [❓ FAQ](#faq)
-- [📝 License](#license)
+- [📗 Table of Contents](#-table-of-contents)
+- [📖 SWING DANCE STYLES AND STEPS LIBRARY ](#-swing-dance-styles-and-steps-library-)
+  - [🛠 Built With ](#-built-with-)
+    - [Tech Stack ](#tech-stack-)
+    - [Key Features ](#key-features-)
+  - [🚀 Live Demo ](#-live-demo-)
+  - [🚀 Presentation ](#-presentation-)
+  - [💻 Getting Started ](#-getting-started-)
+    - [Prerequisites](#prerequisites)
+    - [Setup](#setup)
+    - [Install](#install)
+    - [Usage](#usage)
+  - [👥 Authors ](#-authors-)
+  - [🔭 Future Features ](#-future-features-)
+  - [🤝 Contributing ](#-contributing-)
+  - [⭐️ Show your support ](#️-show-your-support-)
+  - [❓ FAQ ](#-faq-)
+  - [📝 License ](#-license-)
 
 
 # 📖 SWING DANCE STYLES AND STEPS LIBRARY <a name="about-project"></a>
 
-Hello Webpack
+This is a To Do List website project for the 2nd week, 2nd module, at Microverse.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -62,21 +60,28 @@ Hello Webpack
   </ul>
 </details>
 
+<details>
+  <summary>Bundle</summary>
+  <ul>
+    <li><a href="https://webpack.js.org/">Webpack</a></li>
+  </ul>
+</details>
+
 
 
 
 ### Key Features <a name="key-features"></a>
 
-- **Webpack**
-- **Dev Server**
-- **Bundle**
+- **Add task to List**
+- **Delete task from List**
+- **Check task completed**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-Try it with <a href="">gh-pages</a> Coming soon...
+Try it with <a href="https://mar12358.github.io/to-do-list">gh-pages</a> 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -99,11 +104,11 @@ Coming Soon...
 
 To clone this repository to your local machine, open a terminal and select desired folder:
 ```sh
-  cd webpack
+  cd to-do-list
 ```
 Clone:
 ```sh
-  git clone https://github.com/Mar12358/webpack.git
+  git clone https://github.com/Mar12358/to-do-list.git
 ```
 
 
