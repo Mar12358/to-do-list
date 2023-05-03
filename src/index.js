@@ -19,7 +19,6 @@ h1Container.appendChild(refreshImg);
 container.appendChild(h1Container);
 
 const form = document.createElement('form');
-/* form.setAttribute('action', 'javascript:void(0)'); */
 const input = document.createElement('input');
 input.type = 'text';
 input.name = 'description';
