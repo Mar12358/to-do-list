@@ -20,8 +20,9 @@ body {
   padding: 2vw;
   font-size: 12px;
   font-style: italic;
-  color: rgb(114, 114, 114);;
+  color: rgb(114, 114, 114);
 }
+
 li,
 .content,
 body,
@@ -30,7 +31,6 @@ body,
   display: flex;
   align-items: center;
   padding: 0.5vw;
-  
 }
 
 li,
@@ -49,15 +49,16 @@ li,
 .refresh-img {
   height: 1.2rem;
 }
+
 .refresh-img {
   height: 1rem;
 }
-.h1-container {
 
+.h1-container {
   padding: 0.2vw;
 }
+
 h1 {
-  
   font-size: 14px;
 }
 
