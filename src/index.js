@@ -1,12 +1,22 @@
 import './style.css';
 import menuImgSrc from './menu.png';
 import enterImgSrc from './enter.png';
+import refreshImgSrc from './refresh.png';
 
+const body = document.getElementsByTagName('body')[0];
 const container = document.querySelector('.to-do-list');
+
+const h1Container = document.createElement('div');
+h1Container.className = 'h1-container';
 
 const h1 = document.createElement('h1');
 h1.innerHTML = "Today's To Do";
-container.appendChild(h1);
+h1Container.appendChild(h1);
+const refreshImg = document.createElement('img');
+refreshImg.src = refreshImgSrc;
+refreshImg.className = 'refresh-img';
+h1Container.appendChild(refreshImg);
+container.appendChild(h1Container);
 
 const form = document.createElement('form');
 /* form.setAttribute('action', 'javascript:void(0)'); */
@@ -14,7 +24,7 @@ const input = document.createElement('input');
 input.type = 'text';
 input.name = 'description';
 input.placeholder = 'Add to your list...';
-const inputLine = document.createElement('div')
+const inputLine = document.createElement('div');
 inputLine.className = 'input-line';
 inputLine.appendChild(input);
 const enterImg = document.createElement('img');
@@ -75,4 +85,8 @@ if (localStorage.length !== 0) {
     }
     container.appendChild(ul);
   });
+  const clearButton = document.createElement('button');
+  clearButton.className = 'clear-btn';
+  clearButton.innerHTML = 'Clear all completed';
+  body.appendChild(clearButton);
 }
