@@ -1,0 +1,68 @@
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 14px;
+  vertical-align: baseline;
+}
+
+body {
+  flex-direction: column;
+}
+
+.to-do-list,
+.clear-btn {
+  width: 50vw;
+  align-items: center;
+}
+
+.clear-btn {
+  padding: 2vw;
+  font-size: 12px;
+  font-style: italic;
+  color: rgb(114, 114, 114);
+}
+
+li,
+.content,
+body,
+.input-line,
+.h1-container {
+  display: flex;
+  align-items: center;
+  padding: 0.5vw;
+}
+
+li,
+.input-line,
+.h1-container {
+  border-bottom: 1px solid rgb(190, 190, 190);
+  justify-content: space-between;
+}
+
+.content {
+  gap: 1.5vw;
+}
+
+.menu-img,
+.enter-img,
+.refresh-img {
+  height: 1.2rem;
+}
+
+.refresh-img {
+  height: 1rem;
+}
+
+.h1-container {
+  padding: 0.2vw;
+}
+
+h1 {
+  font-size: 14px;
+}
+
+input::placeholder {
+  font-size: 12px;
+  font-style: italic;
+}
