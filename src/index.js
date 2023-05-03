@@ -1,4 +1,5 @@
 import './style.css';
+import menuImgSrc from "./menu.png";
 
 const container = document.querySelector('.to-do-list');
 
@@ -52,6 +53,10 @@ if (localStorage.length !== 0) {
       p.innerHTML = storedTasks[i].description;
       storedTasks[i].index = i;
       li.appendChild(p);
+      const menuImg = document.createElement('img');
+      menuImg.src = menuImgSrc;
+      li.appendChild(menuImg);
+
       ul.appendChild(li);
       arryOfTasks.push(storedTasks[i]);
     }
