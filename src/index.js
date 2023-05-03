@@ -64,7 +64,7 @@ if (localStorage.length !== 0) {
       checkBox.checked = storedTasks[i].completed;
       const p = document.createElement('p');
       p.innerHTML = storedTasks[i].description;
-      storedTasks[i].index = i;
+      storedTasks[i].index = i + 1;
       content.appendChild(p);
       li.appendChild(content);
       const menuImg = document.createElement('img');
