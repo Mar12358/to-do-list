@@ -39,27 +39,32 @@ const Task = {
   },
 };
 
+input.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && input.value !== '') {
+    e.preventDefault();
+    const task = Task.create(input.value, arryOfTasks.length);
+    arryOfTasks.push(task);
+    input.value = '';
+    localStorage.setItem('tasks', JSON.stringify(arryOfTasks));
+  }
+});
+
 const ul = document.createElement('ul');
 
 document.addEventListener('DOMContentLoaded', () => {
-  const task1 = Task.create('Fix car', 1);
-  const task2 = Task.create('Wash Dishes', 2);
-  const task3 = Task.create('Practice Guitar', 3);
-  arryOfTasks.push(task1);
-  arryOfTasks.push(task2);
-  arryOfTasks.push(task3);
-  if (arryOfTasks.length !== 0) {
-    for (let i = 0; i < arryOfTasks.length; i += 1) {
+  if (localStorage.length !== 0) {
+    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+    for (let i = 0; i < storedTasks.length; i += 1) {
       const li = document.createElement('li');
       const checkBox = document.createElement('input');
       checkBox.type = 'checkbox';
       const content = document.createElement('div');
       content.className = 'content';
       content.appendChild(checkBox);
-      checkBox.checked = arryOfTasks[i].completed;
+      checkBox.checked = storedTasks[i].completed;
       const p = document.createElement('p');
-      p.innerHTML = arryOfTasks[i].description;
-      arryOfTasks[i].index = i + 1;
+      p.innerHTML = storedTasks[i].description;
+      storedTasks[i].index = i + 1;
       content.appendChild(p);
       li.appendChild(content);
       const menuImg = document.createElement('img');
@@ -68,6 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
       li.appendChild(menuImg);
 
       ul.appendChild(li);
+      arryOfTasks.push(storedTasks[i]);
     }
     container.appendChild(ul);
   }
