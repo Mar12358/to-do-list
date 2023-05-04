@@ -1,18 +1,6 @@
 import menuImgSrc from '../menu.png';
 import enterImgSrc from '../enter.png';
 import refreshImgSrc from '../refresh.png';
-/* const addText = () => {
-  const t = document.createElement('div');
-  const text = "text's test";
-  t.innerHTML = `
-    <div>
-      <p>${text}</p>
-    </div>
-  `;
-  const bodyTest = document.getElementsByTagName('body')[0];
-  bodyTest.appendChild(t);
-};
-export default addText; */
 
 export const createFrame = () => {
   const h1Container = document.querySelector('.h1-container');
