@@ -23,6 +23,7 @@ export const createFrame = () => {
   h1Container.appendChild(refreshImg);
   const form = document.createElement('form');
   const input = document.createElement('input');
+  input.className = 'add-task-input';
   input.type = 'text';
   input.name = 'description';
   input.placeholder = 'Add to your list...';
@@ -38,6 +39,25 @@ export const createFrame = () => {
   container.appendChild(form);
 };
 
+export const addTaskToHTML = (task) => {
+  const ul = document.querySelector('ul');
+  const li = document.createElement('li');
+  const checkBox = document.createElement('input');
+  checkBox.type = 'checkbox';
+  const content = document.createElement('div');
+  content.className = 'content';
+  content.appendChild(checkBox);
+  checkBox.checked = task.completed;
+  const p = document.createElement('p');
+  p.innerHTML = task.description;
+  content.appendChild(p);
+  li.appendChild(content);
+  const menuImg = document.createElement('img');
+  menuImg.src = menuImgSrc;
+  menuImg.classList = 'menu-img';
+  li.appendChild(menuImg);
+  ul.appendChild(li);
+};
 export const addLocalStorage = () => {
   const ul = document.createElement('ul');
   const arrayOfTasks = [];
