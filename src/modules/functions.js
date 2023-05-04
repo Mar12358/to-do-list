@@ -36,13 +36,16 @@ export const addTaskToHTML = (task) => {
   content.className = 'content';
   content.appendChild(checkBox);
   checkBox.checked = task.completed;
-  const p = document.createElement('p');
-  p.innerHTML = task.description;
-  content.appendChild(p);
+  const inp = document.createElement('input');
+  inp.value = task.description;
+  inp.type = 'text';
+  inp.id = task.index.toString();
+  inp.classList = ('added-task uneditable');
+  content.appendChild(inp);
   li.appendChild(content);
   const menuImg = document.createElement('img');
   menuImg.src = menuImgSrc;
-  menuImg.classList = 'menu-img';
+  menuImg.className = 'menu-img';
   li.appendChild(menuImg);
   ul.appendChild(li);
 };
@@ -58,14 +61,18 @@ export const addLocalStorage = () => {
     content.className = 'content';
     content.appendChild(checkBox);
     checkBox.checked = storedTasks[i].completed;
-    const p = document.createElement('p');
-    p.innerHTML = storedTasks[i].description;
+    const inp = document.createElement('input');
+    inp.value = storedTasks[i].description;
+    inp.type = 'text';
+    inp.classList = ('added-task uneditable');
+    inp.setAttribute('readonly', true);
     storedTasks[i].index = i + 1;
-    content.appendChild(p);
+    inp.id = storedTasks[i].index.toString();
+    content.appendChild(inp);
     li.appendChild(content);
     const menuImg = document.createElement('img');
     menuImg.src = menuImgSrc;
-    menuImg.classList = 'menu-img';
+    menuImg.className = 'menu-img';
     li.appendChild(menuImg);
 
     ul.appendChild(li);
@@ -82,4 +89,30 @@ export const Task = {
     task.index = index;
     return task;
   },
+};
+const updateObject = () => {
+
+};
+
+const updateLocalStorage = () => {
+  const storedTasks = JSON.parse(localStorage.getItem('tasks'));
+  console.log(storedTasks);
+};
+
+export const editTask = (clickedElement) => {
+  const li = clickedElement;
+  const input = li.querySelector('.added-task');
+  li.classList.add('focused-li');
+  input.removeAttribute('readonly');
+  input.classList.add('on-focus');
+  input.focus();
+  input.setSelectionRange(input.value.length, input.value.length);
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' && input.value !== '') {
+      input.setAttribute('readonly', true);
+      li.classList.remove('focused-li');
+      updateObject(parseInt(input.id, 10), input.value);
+      updateLocalStorage(parseInt(input.id, 10), input.value);
+    }
+  });
 };

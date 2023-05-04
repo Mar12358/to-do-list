@@ -6,6 +6,10 @@
   vertical-align: baseline;
 }
 
+input[type="text"]{
+  all: initial;
+}
+
 body {
   flex-direction: column;
 }
@@ -66,4 +70,15 @@ h1 {
 input::placeholder {
   font-size: 12px;
   font-style: italic;
+}
+
+.on-focus:focus {
+  background-color: bisque;
+  all: initial;
+
+  
+}
+
+.focused-li {
+  background-color: bisque;
 }

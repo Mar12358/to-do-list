@@ -1,6 +1,6 @@
 import './style.css';
 import {
-  addLocalStorage, addTaskToHTML, createFrame, Task,
+  addLocalStorage, addTaskToHTML, createFrame, Task, editTask,
 } from './modules/functions.js';
 
 const body = document.getElementsByTagName('body')[0];
@@ -30,9 +30,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const ul = document.createElement('ul');
     container.appendChild(ul);
   }
+  const threeDots = document.querySelectorAll('.menu-img');
+  for (let i = 0; i < threeDots.length; i += 1) {
+    threeDots[i].addEventListener('click', (event) => { editTask(event.target.parentNode); });
+  }
 });
+
+/*
+ */
 const clearButton = document.createElement('button');
 clearButton.className = 'clear-btn';
 clearButton.innerHTML = 'Clear all completed';
 body.appendChild(clearButton);
-/* addText(); */
