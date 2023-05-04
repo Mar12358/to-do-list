@@ -24,8 +24,11 @@ input.addEventListener('keydown', (e) => {
 document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.length !== 0) {
     const { ul, arrayOfTasks: localStorageArray } = addLocalStorage();
-    container.appendChild(ul);
     arryOfTasks.push(...localStorageArray);
+    container.appendChild(ul);
+  } else {
+    const ul = document.createElement('ul');
+    container.appendChild(ul);
   }
 });
 const clearButton = document.createElement('button');
