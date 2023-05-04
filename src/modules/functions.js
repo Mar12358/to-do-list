@@ -94,12 +94,17 @@ const updateObject = () => {
 
 };
 
-const updateLocalStorage = () => {
+const updateLocalStorage = (id, value, completed) => {
   const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-  console.log(storedTasks);
+  const taskToEdit = storedTasks.find((task) => task.index === id);
+  if (taskToEdit) {
+    taskToEdit.description = value;
+    taskToEdit.completed = completed;
+  }
+  localStorage.setItem('tasks', JSON.stringify(storedTasks));
 };
 
-export const editTask = (clickedElement) => {
+export const editTask = (clickedElement, array) => {
   const li = clickedElement;
   const input = li.querySelector('.added-task');
   li.classList.add('focused-li');
@@ -107,12 +112,18 @@ export const editTask = (clickedElement) => {
   input.classList.add('on-focus');
   input.focus();
   input.setSelectionRange(input.value.length, input.value.length);
-  input.addEventListener('keydown', (e) => {
+
+  const handleEnterKey = (e) => {
     if (e.key === 'Enter' && input.value !== '') {
       input.setAttribute('readonly', true);
       li.classList.remove('focused-li');
-      updateObject(parseInt(input.id, 10), input.value);
-      updateLocalStorage(parseInt(input.id, 10), input.value);
+      const id = parseInt(input.id, 10);
+      updateObject(id, input.value);
+      updateLocalStorage(id, input.value, input.completed);
+      array[id - 1].description = input.value;
+      console.log(array);
+      input.removeEventListener('keydown', handleEnterKey);
     }
-  });
+  };
+  input.addEventListener('keydown', handleEnterKey);
 };
