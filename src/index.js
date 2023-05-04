@@ -1,7 +1,9 @@
 import './style.css';
-import menuImgSrc from './menu.png';
+
 import enterImgSrc from './enter.png';
 import refreshImgSrc from './refresh.png';
+/* import addText from './modules/functions.js'; */
+import addLocalStorage from './modules/functions.js';
 
 const body = document.getElementsByTagName('body')[0];
 const container = document.querySelector('.to-do-list');
@@ -49,36 +51,15 @@ input.addEventListener('keydown', (e) => {
   }
 });
 
-const ul = document.createElement('ul');
-
 document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.length !== 0) {
-    const storedTasks = JSON.parse(localStorage.getItem('tasks'));
-    for (let i = 0; i < storedTasks.length; i += 1) {
-      const li = document.createElement('li');
-      const checkBox = document.createElement('input');
-      checkBox.type = 'checkbox';
-      const content = document.createElement('div');
-      content.className = 'content';
-      content.appendChild(checkBox);
-      checkBox.checked = storedTasks[i].completed;
-      const p = document.createElement('p');
-      p.innerHTML = storedTasks[i].description;
-      storedTasks[i].index = i + 1;
-      content.appendChild(p);
-      li.appendChild(content);
-      const menuImg = document.createElement('img');
-      menuImg.src = menuImgSrc;
-      menuImg.classList = 'menu-img';
-      li.appendChild(menuImg);
-
-      ul.appendChild(li);
-      arryOfTasks.push(storedTasks[i]);
-    }
+    const { ul, arrayOfTasks: localStorageArray } = addLocalStorage();
     container.appendChild(ul);
+    arryOfTasks.push(...localStorageArray);
   }
 });
 const clearButton = document.createElement('button');
 clearButton.className = 'clear-btn';
 clearButton.innerHTML = 'Clear all completed';
 body.appendChild(clearButton);
+/* addText(); */

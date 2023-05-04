@@ -60,6 +60,7 @@ li,
 
 h1 {
   font-size: 14px;
+  white-space: nowrap;
 }
 
 input::placeholder {
