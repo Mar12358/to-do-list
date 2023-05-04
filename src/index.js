@@ -1,46 +1,13 @@
 import './style.css';
-
-import enterImgSrc from './enter.png';
-import refreshImgSrc from './refresh.png';
-/* import addText from './modules/functions.js'; */
-import addLocalStorage from './modules/functions.js';
+import { addLocalStorage, createFrame, Task } from './modules/functions.js';
 
 const body = document.getElementsByTagName('body')[0];
 const container = document.querySelector('.to-do-list');
 
-const h1Container = document.querySelector('.h1-container');
-const refreshImg = document.createElement('img');
-refreshImg.src = refreshImgSrc;
-refreshImg.className = 'refresh-img';
-h1Container.appendChild(refreshImg);
-const form = document.createElement('form');
-const input = document.createElement('input');
-input.type = 'text';
-input.name = 'description';
-input.placeholder = 'Add to your list...';
-const inputLine = document.createElement('div');
-inputLine.className = 'input-line';
-inputLine.appendChild(input);
-const enterImg = document.createElement('img');
-enterImg.src = enterImgSrc;
-enterImg.className = 'enter-img';
-
-inputLine.appendChild(enterImg);
-form.appendChild(inputLine);
-container.appendChild(form);
-
+createFrame();
 const arryOfTasks = [];
 
-const Task = {
-  create(description, index) {
-    const task = Object.create(this);
-    task.description = description;
-    task.completed = false;
-    task.index = index;
-    return task;
-  },
-};
-
+const input = document.querySelector('input');
 input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && input.value !== '') {
     e.preventDefault();
@@ -48,6 +15,17 @@ input.addEventListener('keydown', (e) => {
     arryOfTasks.push(task);
     input.value = '';
     localStorage.setItem('tasks', JSON.stringify(arryOfTasks));
+  /*   const ul = document.querySelector('ul');
+    const li = document.createElement('li');
+    const checkBox = document.createElement('input');
+    checkBox.type = 'checkbox';
+    const content = document.createElement('div');
+    content.className = 'content';
+    content.appendChild(checkBox);
+    checkBox.checked = storedTasks[i].completed;
+    const p = document.createElement('p');
+    p.innerHTML = storedTasks[i].description;
+    arryOfTasks[arryOfTasks.length - 1].index = arryOfTasks.length; */
   }
 });
 
