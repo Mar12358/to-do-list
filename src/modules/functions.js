@@ -152,7 +152,10 @@ export const addTaskToHTML = (task, arrayOfTasks) => {
   li.appendChild(menuImg);
   li.appendChild(trashImg);
   ul.appendChild(li);
-
+  checkBox.addEventListener('change', () => {
+    const textTask = checkBox.nextElementSibling;
+    textTask.classList.toggle('line-through');
+  });
   menuImg.addEventListener('click', (event) => {
     editTask(event.target.parentNode, arrayOfTasks);
   });
