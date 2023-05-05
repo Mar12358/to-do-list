@@ -157,3 +157,14 @@ export const addTaskToHTML = (task, arrayOfTasks) => {
     editTask(event.target.parentNode, arrayOfTasks);
   });
 };
+
+export const addCheckboxListenerOnLoad = () => {
+  const checkboxes = document.querySelectorAll('input[type=checkbox]');
+  checkboxes.forEach((checkbox) => {
+    checkbox.addEventListener('change', () => {
+      const textTask = checkbox.nextElementSibling;
+      console.log(textTask);
+      textTask.classList.toggle('line-through');
+    });
+  });
+};

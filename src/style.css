@@ -85,3 +85,7 @@ input::placeholder {
 .focused-li {
   background-color: bisque;
 }
+
+.line-through[type="text"] {
+  text-decoration: line-through;
+}

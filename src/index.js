@@ -1,6 +1,11 @@
 import './style.css';
 import {
-  addLocalStorage, addTaskToHTML, createFrame, Task, editTask,
+  addLocalStorage,
+  addTaskToHTML,
+  createFrame,
+  Task,
+  editTask,
+  addCheckboxListenerOnLoad,
 } from './modules/functions.js';
 
 const body = document.getElementsByTagName('body')[0];
@@ -36,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       editTask(event.target.parentNode, arrayOfTasks);
     });
   }
+  addCheckboxListenerOnLoad();
 });
 
 const clearButton = document.createElement('button');
