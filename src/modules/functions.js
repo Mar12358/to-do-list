@@ -81,6 +81,7 @@ const updateLocalStorage = (id, value, completed) => {
     taskToEdit.description = value;
     taskToEdit.completed = completed;
   }
+
   localStorage.setItem('tasks', JSON.stringify(storedTasks));
 };
 
@@ -100,11 +101,11 @@ export const editTask = (clickedElement, array) => {
   const deleteElement = () => {
     for (let i = id + 1; i <= array.length; i += 1) {
       const nextElement = document.getElementById((i).toString());
-      nextElement.id = i - 1;
-      array[i - 1].index = nextElement.id;
+      nextElement.id = (i - 1).toString();
+      array[i - 1].index = (nextElement.id).toString();
     }
     array.splice(id - 1, 1);
-    console.log(array);
+    localStorage.setItem('tasks', JSON.stringify(array));
     trash.removeEventListener('click', deleteElement);
     li.remove();
   };
@@ -115,7 +116,7 @@ export const editTask = (clickedElement, array) => {
       editButton.classList.toggle('hidden');
       input.setAttribute('readonly', true);
       li.classList.remove('focused-li');
-      updateLocalStorage(id, input.value, input.completed);
+      updateLocalStorage(id.toString(), input.value, input.completed);
       array[id - 1].description = input.value;
       input.removeEventListener('keydown', handleEnterKey);
       trash.removeEventListener('click', deleteElement);
@@ -151,6 +152,7 @@ export const addTaskToHTML = (task, arrayOfTasks) => {
   li.appendChild(menuImg);
   li.appendChild(trashImg);
   ul.appendChild(li);
+
   menuImg.addEventListener('click', (event) => {
     editTask(event.target.parentNode, arrayOfTasks);
   });
