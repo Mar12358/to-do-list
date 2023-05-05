@@ -72,9 +72,9 @@ This is a To Do List website project for the 2nd week, 2nd module, at Microverse
 
 ### Key Features <a name="key-features"></a>
 
-- **Add task to List**
-- **Delete task from List**
-- **Check task completed**
+- **Animations and Transitions**
+- **Improve design/Style CSS**
+- **refresh and enter buttons**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
