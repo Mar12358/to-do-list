@@ -97,6 +97,10 @@ export const editTask = (clickedElement, array) => {
   input.focus();
   input.setSelectionRange(input.value.length, input.value.length);
 
+  const deleteElement = () => {
+    li.remove();
+    trash.removeEventListener('click', deleteElement);
+  };
   const handleEnterKey = (e) => {
     if (e.key === 'Enter' && input.value !== '') {
       trash.classList.toggle('hidden');
@@ -107,10 +111,12 @@ export const editTask = (clickedElement, array) => {
       updateLocalStorage(id, input.value, input.completed);
       array[id - 1].description = input.value;
       input.removeEventListener('keydown', handleEnterKey);
+      trash.removeEventListener('click', deleteElement);
     }
   };
 
   input.addEventListener('keydown', handleEnterKey);
+  trash.addEventListener('click', deleteElement);
 };
 
 export const addTaskToHTML = (task, arrayOfTasks) => {
