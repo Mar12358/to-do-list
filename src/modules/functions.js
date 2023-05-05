@@ -2,6 +2,7 @@ import menuImgSrc from '../menu.png';
 import enterImgSrc from '../enter.png';
 import refreshImgSrc from '../refresh.png';
 import trashImgSrc from '../trash.png';
+import { addCheckboxListenerOnLoad } from './check_box.js';
 
 export const createFrame = () => {
   const h1Container = document.querySelector('.h1-container');
@@ -44,6 +45,9 @@ export const addLocalStorage = () => {
     inp.value = storedTasks[i].description;
     inp.type = 'text';
     inp.classList = ('added-task uneditable');
+    if (checkBox.checked) {
+      inp.classList.add('line-through');
+    }
     inp.setAttribute('readonly', true);
     storedTasks[i].index = (i + 1).toString();
     inp.id = storedTasks[i].index.toString();
@@ -116,7 +120,8 @@ export const editTask = (clickedElement, array) => {
       editButton.classList.toggle('hidden');
       input.setAttribute('readonly', true);
       li.classList.remove('focused-li');
-      updateLocalStorage(id.toString(), input.value, input.completed);
+      const completed = input.classList.contains('line-through');
+      updateLocalStorage(id.toString(), input.value, completed);
       array[id - 1].description = input.value;
       input.removeEventListener('keydown', handleEnterKey);
       trash.removeEventListener('click', deleteElement);
@@ -152,21 +157,8 @@ export const addTaskToHTML = (task, arrayOfTasks) => {
   li.appendChild(menuImg);
   li.appendChild(trashImg);
   ul.appendChild(li);
-  checkBox.addEventListener('change', () => {
-    const textTask = checkBox.nextElementSibling;
-    textTask.classList.toggle('line-through');
-  });
+  addCheckboxListenerOnLoad([checkBox], arrayOfTasks);
   menuImg.addEventListener('click', (event) => {
     editTask(event.target.parentNode, arrayOfTasks);
-  });
-};
-
-export const addCheckboxListenerOnLoad = () => {
-  const checkboxes = document.querySelectorAll('input[type=checkbox]');
-  checkboxes.forEach((checkbox) => {
-    checkbox.addEventListener('change', () => {
-      const textTask = checkbox.nextElementSibling;
-      textTask.classList.toggle('line-through');
-    });
   });
 };

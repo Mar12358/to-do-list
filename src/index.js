@@ -5,8 +5,8 @@ import {
   createFrame,
   Task,
   editTask,
-  addCheckboxListenerOnLoad,
 } from './modules/functions.js';
+import { addCheckboxListenerOnLoad, clearCompleted } from './modules/check_box.js';
 
 const body = document.getElementsByTagName('body')[0];
 const container = document.querySelector('.to-do-list');
@@ -25,6 +25,10 @@ input.addEventListener('keydown', (e) => {
     input.value = '';
   }
 });
+const clearButton = document.createElement('button');
+clearButton.className = 'clear-btn';
+clearButton.innerHTML = 'Clear all completed';
+body.appendChild(clearButton);
 
 document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.length !== 0) {
@@ -41,10 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
       editTask(event.target.parentNode, arrayOfTasks);
     });
   }
-  addCheckboxListenerOnLoad();
-});
+  const checkboxes = document.querySelectorAll('input[type=checkbox]');
+  addCheckboxListenerOnLoad(checkboxes, arrayOfTasks);
 
-const clearButton = document.createElement('button');
-clearButton.className = 'clear-btn';
-clearButton.innerHTML = 'Clear all completed';
-body.appendChild(clearButton);
+  clearButton.addEventListener('click', () => {
+    clearCompleted(arrayOfTasks);
+  });
+});
