@@ -13,7 +13,7 @@ const input = document.querySelector('input');
 input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && input.value !== '') {
     e.preventDefault();
-    const task = Task.create(input.value, arrayOfTasks.length);
+    const task = Task.create(input.value, arrayOfTasks.length + 1);
     arrayOfTasks.push(task);
     localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
     addTaskToHTML(task, arrayOfTasks);

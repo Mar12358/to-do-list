@@ -6,7 +6,7 @@
   vertical-align: baseline;
 }
 
-input[type="text"]{
+input[type="text"] {
   all: initial;
 }
 
@@ -75,8 +75,6 @@ input::placeholder {
 .on-focus:focus {
   background-color: bisque;
   all: initial;
-
-  
 }
 
 .focused-li {

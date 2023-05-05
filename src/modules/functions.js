@@ -68,9 +68,6 @@ export const Task = {
     return task;
   },
 };
-const updateObject = () => {
-
-};
 
 const updateLocalStorage = (id, value, completed) => {
   const storedTasks = JSON.parse(localStorage.getItem('tasks'));
@@ -96,12 +93,12 @@ export const editTask = (clickedElement, array) => {
       input.setAttribute('readonly', true);
       li.classList.remove('focused-li');
       const id = parseInt(input.id, 10);
-      updateObject(id, input.value);
       updateLocalStorage(id, input.value, input.completed);
       array[id - 1].description = input.value;
       input.removeEventListener('keydown', handleEnterKey);
     }
   };
+
   input.addEventListener('keydown', handleEnterKey);
 };
 
