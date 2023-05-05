@@ -6,6 +6,10 @@
   vertical-align: baseline;
 }
 
+input[type="text"] {
+  all: initial;
+}
+
 body {
   flex-direction: column;
 }
@@ -46,8 +50,13 @@ li,
 
 .menu-img,
 .enter-img,
-.refresh-img {
+.refresh-img,
+.trash-img {
   height: 1.2rem;
+}
+
+.hidden {
+  display: none;
 }
 
 .refresh-img {
@@ -60,9 +69,23 @@ li,
 
 h1 {
   font-size: 14px;
+  white-space: nowrap;
 }
 
 input::placeholder {
   font-size: 12px;
   font-style: italic;
+}
+
+.on-focus:focus {
+  background-color: bisque;
+  all: initial;
+}
+
+.focused-li {
+  background-color: bisque;
+}
+
+.line-through[type="text"] {
+  text-decoration: line-through;
 }
