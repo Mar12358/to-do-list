@@ -50,10 +50,14 @@ li,
 
 .menu-img,
 .enter-img,
-.refresh-img {
+.refresh-img,
+.trash-img {
   height: 1.2rem;
 }
 
+.hidden {
+  display: none;
+}
 .refresh-img {
   height: 1rem;
 }

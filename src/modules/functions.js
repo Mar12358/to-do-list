@@ -1,6 +1,7 @@
 import menuImgSrc from '../menu.png';
 import enterImgSrc from '../enter.png';
 import refreshImgSrc from '../refresh.png';
+import trashImgSrc from '../trash.png';
 
 export const createFrame = () => {
   const h1Container = document.querySelector('.h1-container');
@@ -52,6 +53,10 @@ export const addLocalStorage = () => {
     menuImg.src = menuImgSrc;
     menuImg.className = 'menu-img';
     li.appendChild(menuImg);
+    const trashImg = document.createElement('img');
+    trashImg.src = trashImgSrc;
+    trashImg.className = 'trash-img hidden';
+    li.appendChild(trashImg);
 
     ul.appendChild(li);
     arrayOfTasks.push(storedTasks[i]);
@@ -82,6 +87,10 @@ const updateLocalStorage = (id, value, completed) => {
 export const editTask = (clickedElement, array) => {
   const li = clickedElement;
   const input = li.querySelector('.added-task');
+  const trash = li.querySelector('.trash-img');
+  const basket = li.querySelector('.menu-img');
+  trash.classList.toggle('hidden');
+  basket.classList.toggle('hidden');
   li.classList.add('focused-li');
   input.removeAttribute('readonly');
   input.classList.add('on-focus');
@@ -90,6 +99,8 @@ export const editTask = (clickedElement, array) => {
 
   const handleEnterKey = (e) => {
     if (e.key === 'Enter' && input.value !== '') {
+      trash.classList.toggle('hidden');
+      basket.classList.toggle('hidden');
       input.setAttribute('readonly', true);
       li.classList.remove('focused-li');
       const id = parseInt(input.id, 10);
