@@ -11,3 +11,11 @@ export const addCheckboxListenerOnLoad = (checkboxes, array) => {
   });
 };
 
+export const clearCompleted = (arrayOfTasks) => {
+  const incompleteTasks = arrayOfTasks.filter((task) => task.completed !== true);
+  for (let i = 0; i < incompleteTasks.length; i += 1) {
+    incompleteTasks[i].index = i + 1;
+  }
+  localStorage.setItem('tasks', JSON.stringify(incompleteTasks));
+  window.location.reload(true);
+};

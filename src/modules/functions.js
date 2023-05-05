@@ -2,7 +2,7 @@ import menuImgSrc from '../menu.png';
 import enterImgSrc from '../enter.png';
 import refreshImgSrc from '../refresh.png';
 import trashImgSrc from '../trash.png';
-import addCheckboxListenerOnLoad from './check_box.js';
+import { addCheckboxListenerOnLoad } from './check_box.js';
 
 export const createFrame = () => {
   const h1Container = document.querySelector('.h1-container');
