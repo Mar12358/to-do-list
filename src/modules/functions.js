@@ -45,7 +45,7 @@ export const addLocalStorage = () => {
     inp.type = 'text';
     inp.classList = ('added-task uneditable');
     inp.setAttribute('readonly', true);
-    storedTasks[i].index = i + 1;
+    storedTasks[i].index = (i + 1).toString();
     inp.id = storedTasks[i].index.toString();
     content.appendChild(inp);
     li.appendChild(content);
@@ -88,26 +88,33 @@ export const editTask = (clickedElement, array) => {
   const li = clickedElement;
   const input = li.querySelector('.added-task');
   const trash = li.querySelector('.trash-img');
-  const basket = li.querySelector('.menu-img');
+  const editButton = li.querySelector('.menu-img');
   trash.classList.toggle('hidden');
-  basket.classList.toggle('hidden');
+  editButton.classList.toggle('hidden');
   li.classList.add('focused-li');
   input.removeAttribute('readonly');
   input.classList.add('on-focus');
   input.focus();
   input.setSelectionRange(input.value.length, input.value.length);
-
+  const id = parseInt(input.id, 10);
   const deleteElement = () => {
-    li.remove();
+    for (let i = id + 1; i <= array.length; i += 1) {
+      const nextElement = document.getElementById((i).toString());
+      nextElement.id = i - 1;
+      array[i - 1].index = nextElement.id;
+    }
+    array.splice(id - 1, 1);
+    console.log(array);
     trash.removeEventListener('click', deleteElement);
+    li.remove();
   };
+
   const handleEnterKey = (e) => {
     if (e.key === 'Enter' && input.value !== '') {
       trash.classList.toggle('hidden');
-      basket.classList.toggle('hidden');
+      editButton.classList.toggle('hidden');
       input.setAttribute('readonly', true);
       li.classList.remove('focused-li');
-      const id = parseInt(input.id, 10);
       updateLocalStorage(id, input.value, input.completed);
       array[id - 1].description = input.value;
       input.removeEventListener('keydown', handleEnterKey);
@@ -138,7 +145,11 @@ export const addTaskToHTML = (task, arrayOfTasks) => {
   const menuImg = document.createElement('img');
   menuImg.src = menuImgSrc;
   menuImg.className = 'menu-img';
+  const trashImg = document.createElement('img');
+  trashImg.src = trashImgSrc;
+  trashImg.classList = 'trash-img hidden';
   li.appendChild(menuImg);
+  li.appendChild(trashImg);
   ul.appendChild(li);
   menuImg.addEventListener('click', (event) => {
     editTask(event.target.parentNode, arrayOfTasks);
