@@ -27,28 +27,6 @@ export const createFrame = () => {
   container.appendChild(form);
 };
 
-export const addTaskToHTML = (task) => {
-  const ul = document.querySelector('ul');
-  const li = document.createElement('li');
-  const checkBox = document.createElement('input');
-  checkBox.type = 'checkbox';
-  const content = document.createElement('div');
-  content.className = 'content';
-  content.appendChild(checkBox);
-  checkBox.checked = task.completed;
-  const inp = document.createElement('input');
-  inp.value = task.description;
-  inp.type = 'text';
-  inp.id = task.index.toString();
-  inp.classList = ('added-task uneditable');
-  content.appendChild(inp);
-  li.appendChild(content);
-  const menuImg = document.createElement('img');
-  menuImg.src = menuImgSrc;
-  menuImg.className = 'menu-img';
-  li.appendChild(menuImg);
-  ul.appendChild(li);
-};
 export const addLocalStorage = () => {
   const ul = document.createElement('ul');
   const arrayOfTasks = [];
@@ -121,9 +99,34 @@ export const editTask = (clickedElement, array) => {
       updateObject(id, input.value);
       updateLocalStorage(id, input.value, input.completed);
       array[id - 1].description = input.value;
-      console.log(array);
       input.removeEventListener('keydown', handleEnterKey);
     }
   };
   input.addEventListener('keydown', handleEnterKey);
+};
+
+export const addTaskToHTML = (task, arrayOfTasks) => {
+  const ul = document.querySelector('ul');
+  const li = document.createElement('li');
+  const checkBox = document.createElement('input');
+  checkBox.type = 'checkbox';
+  const content = document.createElement('div');
+  content.className = 'content';
+  content.appendChild(checkBox);
+  checkBox.checked = task.completed;
+  const inp = document.createElement('input');
+  inp.value = task.description;
+  inp.type = 'text';
+  inp.id = task.index.toString();
+  inp.classList = ('added-task uneditable');
+  content.appendChild(inp);
+  li.appendChild(content);
+  const menuImg = document.createElement('img');
+  menuImg.src = menuImgSrc;
+  menuImg.className = 'menu-img';
+  li.appendChild(menuImg);
+  ul.appendChild(li);
+  menuImg.addEventListener('click', (event) => {
+    editTask(event.target.parentNode, arrayOfTasks);
+  });
 };

@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const threeDots = document.querySelectorAll('.menu-img');
   for (let i = 0; i < threeDots.length; i += 1) {
     threeDots[i].addEventListener('click', (event) => {
-      console.log('asfasf');
       editTask(event.target.parentNode, arrayOfTasks);
     });
   }
