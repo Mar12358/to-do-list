@@ -148,7 +148,9 @@ N/A
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-Coming soon...
+- **Update completed property in Object, HTML Elements and localStorage**
+- **Clear all completed**
+- **Deployment**
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
