@@ -81,7 +81,7 @@ This is a To Do List website project for the 2nd week, 2nd module, at Microverse
 
 ## 🚀 Live Demo <a name="live-demo"></a>
 
-Cooming soon... (Not required yet, it's for next milestone...)
+Try it with <a href="https://mar12358.github.io/to-do-list/">gh-pages</a>
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
