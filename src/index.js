@@ -5,8 +5,8 @@ import {
   createFrame,
   Task,
   editTask,
-  addCheckboxListenerOnLoad,
 } from './modules/functions.js';
+import addCheckboxListenerOnLoad from './modules/check_box.js';
 
 const body = document.getElementsByTagName('body')[0];
 const container = document.querySelector('.to-do-list');
