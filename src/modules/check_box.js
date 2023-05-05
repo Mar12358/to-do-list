@@ -1,11 +1,13 @@
-const addCheckboxListenerOnLoad = () => {
-  const checkboxes = document.querySelectorAll('input[type=checkbox]');
+export const addCheckboxListenerOnLoad = (checkboxes, array) => {
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', () => {
-      const textTask = checkbox.nextElementSibling;
-      textTask.classList.toggle('line-through');
+      const text = checkbox.nextElementSibling;
+      text.classList.toggle('line-through');
+      array[parseInt(text.id, 10) - 1].completed = !array[parseInt(text.id, 10) - 1].completed;
+      localStorage.setItem('tasks', JSON.stringify(array));
+
+      // arrayOfTasks[parseInt(textTask.id)].compl
     });
   });
 };
 
-export default addCheckboxListenerOnLoad;
