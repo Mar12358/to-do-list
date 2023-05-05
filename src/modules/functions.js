@@ -163,7 +163,6 @@ export const addCheckboxListenerOnLoad = () => {
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', () => {
       const textTask = checkbox.nextElementSibling;
-      console.log(textTask);
       textTask.classList.toggle('line-through');
     });
   });
