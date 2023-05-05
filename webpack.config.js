@@ -6,6 +6,7 @@ module.exports = {
   entry: {
     index: './src/index.js',
     functions: './src/modules/functions.js',
+    checkbox: './src/modules/check_box.js',
   },
   devtool: 'inline-source-map',
   devServer: {
