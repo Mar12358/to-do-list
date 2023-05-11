@@ -1,0 +1,1 @@
+const { addTask, editTask, addLocalStorage } = require('./functions.js');

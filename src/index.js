@@ -1,15 +1,15 @@
 import './style.css';
 import {
-  addLocalStorage,
-  addTaskToHTML,
+  addTask,
   createFrame,
   Task,
   editTask,
+  populateHTML,
+  createEmptyUl,
 } from './modules/functions.js';
 import { addCheckboxListenerOnLoad, clearCompleted } from './modules/check_box.js';
 
 const body = document.getElementsByTagName('body')[0];
-const container = document.querySelector('.to-do-list');
 
 createFrame();
 const arrayOfTasks = [];
@@ -17,11 +17,11 @@ const arrayOfTasks = [];
 const input = document.querySelector('input');
 input.addEventListener('keydown', (e) => {
   if (e.key === 'Enter' && input.value !== '') {
-    e.preventDefault();
     const task = Task.create(input.value, (arrayOfTasks.length + 1).toString());
+    e.preventDefault();
     arrayOfTasks.push(task);
+    addTask(task, arrayOfTasks);
     localStorage.setItem('tasks', JSON.stringify(arrayOfTasks));
-    addTaskToHTML(task, arrayOfTasks);
     input.value = '';
   }
 });
@@ -32,19 +32,16 @@ body.appendChild(clearButton);
 
 document.addEventListener('DOMContentLoaded', () => {
   if (localStorage.length !== 0) {
-    const { ul, arrayOfTasks: localStorageArray } = addLocalStorage();
-    arrayOfTasks.push(...localStorageArray);
-    container.appendChild(ul);
+    populateHTML(arrayOfTasks);
   } else {
-    const ul = document.createElement('ul');
-    container.appendChild(ul);
+    createEmptyUl();
   }
   const threeDots = document.querySelectorAll('.menu-img');
-  for (let i = 0; i < threeDots.length; i += 1) {
-    threeDots[i].addEventListener('click', (event) => {
+  threeDots.forEach((threeDot) => {
+    threeDot.addEventListener('click', (event) => {
       editTask(event.target.parentNode, arrayOfTasks);
     });
-  }
+  });
   const checkboxes = document.querySelectorAll('input[type=checkbox]');
   addCheckboxListenerOnLoad(checkboxes, arrayOfTasks);
 

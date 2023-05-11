@@ -89,6 +89,20 @@ const updateLocalStorage = (id, value, completed) => {
   localStorage.setItem('tasks', JSON.stringify(storedTasks));
 };
 
+const deleteElement = (li, array) => {
+  const input = li.querySelector('.added-task');
+  const id = parseInt(input.id, 10);
+  for (let i = id + 1; i <= array.length; i += 1) {
+    const nextElement = document.getElementById((i).toString());
+    nextElement.id = (i - 1).toString();
+    array[i - 1].index = (nextElement.id).toString();
+  }
+  array.splice(id - 1, 1);
+  localStorage.setItem('tasks', JSON.stringify(array));
+  li.querySelector('.added-task').removeEventListener('click', deleteElement);
+  li.remove();
+};
+
 export const editTask = (clickedElement, array) => {
   const li = clickedElement;
   const input = li.querySelector('.added-task');
@@ -102,17 +116,6 @@ export const editTask = (clickedElement, array) => {
   input.focus();
   input.setSelectionRange(input.value.length, input.value.length);
   const id = parseInt(input.id, 10);
-  const deleteElement = () => {
-    for (let i = id + 1; i <= array.length; i += 1) {
-      const nextElement = document.getElementById((i).toString());
-      nextElement.id = (i - 1).toString();
-      array[i - 1].index = (nextElement.id).toString();
-    }
-    array.splice(id - 1, 1);
-    localStorage.setItem('tasks', JSON.stringify(array));
-    trash.removeEventListener('click', deleteElement);
-    li.remove();
-  };
 
   const handleEnterKey = (e) => {
     if (e.key === 'Enter' && input.value !== '') {
@@ -132,7 +135,7 @@ export const editTask = (clickedElement, array) => {
   trash.addEventListener('click', deleteElement);
 };
 
-export const addTaskToHTML = (task, arrayOfTasks) => {
+export const addTask = (task, arrayOfTasks) => { // Impure Function, because of ArrayOfTasks?
   const ul = document.querySelector('ul');
   const li = document.createElement('li');
   const checkBox = document.createElement('input');
@@ -162,3 +165,20 @@ export const addTaskToHTML = (task, arrayOfTasks) => {
     editTask(event.target.parentNode, arrayOfTasks);
   });
 };
+
+const container = document.querySelector('.to-do-list');
+export const populateHTML = (arrayOfTasks) => {
+  const { ul, arrayOfTasks: localStorageArray } = addLocalStorage();
+  arrayOfTasks.push(...localStorageArray);
+  container.appendChild(ul);
+};
+
+export const createEmptyUl = () => {
+  const ul = document.createElement('ul');
+  container.appendChild(ul);
+};
+
+/* module.exports = {
+  addTask, editTask, updateLocalStorage, addLocalStorage,
+};
+ */
